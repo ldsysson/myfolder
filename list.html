@@ -46,26 +46,29 @@
 		
 
 		$("#saveBtn").click(function(){
-			console.log('세이브 버튼 함수 콜');
-
-			var msg = $('#text').val();
-			console.log(msg);
 			
+			var msg = $('#text').val();
+		
+			console.log('div생성 시작');
 			$("<div>")
 			.addClass('alert')
 			.addClass('alert-warning')
 			.addClass('alert-dismissible')
 			.text(msg)
 			.appendTo('.col-sm-6.col-sm-offset-3');
+			console.log('div생성 끝');
 
+
+			console.log('button생성 시작');
 			$("<button/>")
 			.attr('data-dismiss', 'alert')
 			.attr('id', 'closeBtn')
 			.addClass('close')
 			.addClass('glyphicon')
 			.addClass('glyphicon-remove')
-
 			.appendTo('.alert.alert-warning');
+
+			console.log('button생성 끝');
 
 			
 			return false;
