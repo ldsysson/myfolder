@@ -44,6 +44,7 @@
 		});
 
 		
+		var count = 0;
 
 		$("#saveBtn").click(function(){
 			
@@ -51,6 +52,7 @@
 		
 			console.log('div생성 시작');
 			$("<div>")
+			.attr('id', 'text' + count)
 			.addClass('alert')
 			.addClass('alert-warning')
 			.addClass('alert-dismissible')
@@ -66,11 +68,11 @@
 			.addClass('close')
 			.addClass('glyphicon')
 			.addClass('glyphicon-remove')
-			.appendTo('.alert.alert-warning');
+			.appendTo('#text' + count);
 
 			console.log('button생성 끝');
 
-			
+			count++;
 			return false;
 		})
 		
