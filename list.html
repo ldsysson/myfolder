@@ -7,31 +7,70 @@
 	<link rel="stylesheet" href="css/bootstrap.css"/>
 </head>
 <body>
-	<div class="row">
-		<div class="col-sm-6 col-sm-offset-3">
-			<form action="">
-				<div class="form-group">
-					<label for="text">목록에 넣을 글</label>
-					<input type="text" class="form-control" id="text"/>
-					<p class="help-block">반드시 입력하세요.</p>
-				</div>
-				<div class="checkbox">
-					<label>
-						<input type="checkbox"/> 목록에 넣기
-					</label>
-				</div>
-				<button type="submit" class="btn btn-primary">저장</button>
-				<button type="reset" class="btn btn-warning">취소</button>
-			</form>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6 col-sm-offset-3">
+				<form action="">
+					<div class="form-group">
+						<label for="text">목록에 넣을 글</label>
+						<input type="text" class="form-control" id="text"/>
+						<p class="help-block">반드시 입력하세요.</p>
+					</div>
+					<div class="checkbox">
+						<label>
+							<input type="checkbox"/> 목록에 넣기
+						</label>
+					</div>
+					<button class="btn btn-primary" id="saveBtn">저장</button>
+					<button type="reset" class="btn btn-warning">취소</button>
+				</form>
+				<h3> </h3>
+	
+				
+			</div>
 		</div>
+		
 	</div>
+
 
 	<script src="js/jquery-3.3.1.js"></script>
 	<script src="js/bootstrap.js"></script>
 	<script>
 		$("#closeBtn").click(function(){
+			console.log('닫기 버튼이 눌림')
 			$(this).parent().remove();
+
+			return false;
 		});
+
+		
+
+		$("#saveBtn").click(function(){
+			console.log('세이브 버튼 함수 콜');
+
+			var msg = $('#text').val();
+			console.log(msg);
+			
+			$("<div>")
+			.addClass('alert')
+			.addClass('alert-warning')
+			.addClass('alert-dismissible')
+			.text(msg)
+			.appendTo('.col-sm-6.col-sm-offset-3');
+
+			$("<button/>")
+			.attr('data-dismiss', 'alert')
+			.attr('id', 'closeBtn')
+			.addClass('close')
+			.addClass('glyphicon')
+			.addClass('glyphicon-remove')
+
+			.appendTo('.alert.alert-warning');
+
+			
+			return false;
+		})
+		
 </script>	
 </body>
 </html>
