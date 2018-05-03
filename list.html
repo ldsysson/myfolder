@@ -25,9 +25,9 @@
 					<button class="btn btn-primary" id="saveBtn">저장</button>
 					<button type="reset" class="btn btn-warning">취소</button>
 				</form>
-				<h3> </h3>
-	
-				
+				<div class="buttons">
+			
+				</div>
 			</div>
 		</div>
 		
@@ -38,6 +38,7 @@
 	<script src="js/bootstrap.js"></script>
 	<script>
 
+
 		$("#closeBtn").click(function(){
 			console.log('닫기 버튼이 눌림')
 			$(this).parent().remove();
@@ -46,33 +47,50 @@
 		});
 
 		
+		var count = 0;
 
 		$("#saveBtn").click(function(){
 			
 			var msg = $('#text').val();
+			console.log(msg == '');
+			
+			if(msg == ''){
+				alert('텍스트를 입력 하십시오')
+				console.log(msg);
+
+				return false;
+			}
 		
 			console.log('div생성 시작');
-			$("<div>")
-			.addClass('alert')
-			.addClass('alert-warning')
-			.addClass('alert-dismissible')
-			.text(msg)
-			.appendTo('.col-sm-6.col-sm-offset-3');
-			console.log('div생성 끝');
 
-
-			console.log('button생성 시작');
-			$("<button/>")
+			var btn=$("<button/>")
 			.attr('data-dismiss', 'alert')
 			.attr('id', 'closeBtn')
 			.addClass('close')
 			.addClass('glyphicon')
-			.addClass('glyphicon-remove')
-			.appendTo('.alert.alert-warning');
+			.addClass('glyphicon-remove');
+
+			$("<div>")
+			.attr('id', 'text' + count)
+			.addClass('alert')
+			.addClass('alert-info')
+			.addClass('alert-dismissible')
+			.text(msg)
+			.append(btn)
+	
+			.appendTo('.col-sm-6.col-sm-offset-3');
+
+			console.log('div생성 끝');
+
+
+			console.log('button생성 시작');
+		
 
 			console.log('button생성 끝');
 
-			
+			$("#text").val('');
+
+			count++;
 			return false;
 		})
 		
